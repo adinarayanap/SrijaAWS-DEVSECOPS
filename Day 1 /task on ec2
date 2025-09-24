@@ -1,1 +1,31 @@
 
+
+Step - Create an EC2 machine with Aws Linxu flavour 
+       select t3.micro freetier
+        Create a new key pair and login to the machine using putty 
+
+
+------------------------------------------------------------------------------------------------------------------
+
+login to the machine using putty - 
+
+install pyhton
+install java
+install apache webserver
+install jenkins 
+
+and acesss the jeknins page from the weburl
+--------------------------------------------------------------------------------------------------------------------------
+
+how to do 
+how to install pyython in my aws ec2 linux machine ----set of instructions
+
+java
+
+
+apache webserver
+
+--------------------------------------------------------------------------------------------------------------------
+
+jenkins - how you are able to weburl
+---------------------------------------------------------------------------------------------------------------------
