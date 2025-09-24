@@ -1,0 +1,137 @@
+# Day 0 
+
+AWS Introduction
+
+# Day 1 
+
+compute 
+
+Ec2 --- 15-20 Topics ------Network /Storage/IAM 
+VM- to install all the dependencies and commands ----
+
+VM 
+IAM
+
+
+
+Storage 
+networking 
+Database 
+syllabus ----
+
+
+
+
+Classes - Alternative days 
+one day class----
+Handson - next day - solution -----
+
+45- 65 days 
+
+Scratch - AWS Pro
+
+Prerequisites - Knowledge on computer 
+Duration - 30-45 mins
+
+aditya       Oracle /DB/AI
+priya        Devops/k8s
+prakash      Oracle DB/Cloud/Devops
+krishnaveni  QA /cloud / Gen AI
+vinutha      SQL /Azure /DB
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Basics of cloud computing
+
+cloud computing?
+
+1)where we can run servers and apps in cloud -internet 
+pay per usage 
+
+----------------------------------------------------------
+
+2) why we need cloud computing ?
+
+inplace of physical resources -we are using /consuming the cloud services /servers
+
+Usage ? benfits ?
+
+Db/apps/hosted - cost analysis - Cost effective - 
+Team/Services - 
+IAAS--------   instance   aws --- user 
+
+-------infrastructure service - EC2 ----created - machine not able to login 
+OS is not installed properly - 
+Apps- who will take care
+------------------------------------------------------------------------------
+PAAS-------    DB  -------
+
+aws - activity 
+user activity 
+
+PAAS- AWS- OS - Storage -----
+DB - No SQL ---- AWS - activity - tables - schema - 
+
+-----------------------------------------------------------------------
+SAAS--------   software as a service -    
+
+---------------------------------------------------------------
+
+onedrive - webmail - ---------------------
+
+snowflake db -------------------------
+---------------------------------------------------------------------------------------------------------------------
+interview -
+--------------------------------------which services you are famliar with aws
+
+IAAS - compute storage networking 
+PAAS - DB IAM 
+SAAS - No-sql- web url 
+--------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+
+AWS- amazon web services 
+windows OS 
+
+Linux 
+Major skill stack for devops /cloud / any scripting shell/bash
+
+ami - amazon machine image -----
+      resources -    
+
+explore - how to create a ec 2
+types of ec2
+types of ec2 family 
+--------------------------------------------------------------------------------------------
+
+Task 1 - create a aws instance whenever you create instnace - i need to install a java by default - lanucning instance 
+
+
+
+Task 2 - create a script to stop all the running machines ------ 50%--cron job 
+
+your own account - Ec2 machine - key pairs/default vpc 
+Ec2 machines - running - delete
+stopped 
+
+4 machines - 2 stopped 
+      2 running mode
+
+------------------------
+mode - stopped mode 
+
+
+---------------------------------------------------------------------------
+
+
+Weekly 2-3 Classes sunday to satday 
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+Interview level _______________________________
+
+EC2--------------------------------17th ----EC2 
+
+   
