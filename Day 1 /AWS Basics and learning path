@@ -1,0 +1,117 @@
+Kick Start on AWS 
+
+Day 1 – AWS Fundamentals
+
+What is Cloud & AWS?
+
+AWS Global Infrastructure: Regions, AZs, Edge Locations
+
+AWS Free Tier overview
+
+Hands-on: Create AWS account, explore AWS Console
+
+🔹 Day 2 – Identity & Access Management (IAM)
+
+Users, Groups, Roles, Policies
+
+Root user vs IAM user
+
+MFA (Multi-Factor Authentication)
+
+Hands-on: Create IAM user, assign policy, login
+
+🔹 Day 3 – Networking Basics (VPC)
+
+VPC, Subnets, Route Tables
+
+Internet Gateway vs NAT Gateway
+
+Security Groups vs NACLs
+
+Hands-on: Create a VPC with public & private subnets
+
+🔹 Day 4 – Compute Basics (EC2)
+
+EC2 Instance types
+
+AMIs, Key pairs, Security Groups
+
+Connecting via SSH
+
+Hands-on: Launch EC2, install Apache/Nginx web server
+
+🔹 Day 5 – Storage Basics (S3)
+
+S3 Buckets, Objects
+
+Storage classes (Standard, IA, Glacier)
+
+Versioning, Encryption, Lifecycle rules
+
+Hands-on: Create bucket, upload/download files
+
+🔹 Day 6 – Databases (RDS & DynamoDB)
+
+RDS: MySQL/Postgres basics
+
+DynamoDB: NoSQL intro
+
+Hands-on: Create RDS MySQL DB, connect from EC2
+
+🔹 Day 7 – Load Balancing & Scaling
+
+Elastic Load Balancer (ELB)
+
+Auto Scaling Groups (ASG)
+
+Hands-on: Launch 2 EC2s, put behind an ELB
+
+🔹 Day 8 – Monitoring & Logging
+
+CloudWatch (metrics, alarms)
+
+CloudTrail (API logs)
+
+Hands-on: Create a CloudWatch alarm for EC2 CPU usage
+
+🔹 Day 9 – Serverless Basics
+
+AWS Lambda
+
+API Gateway
+
+Hands-on: Create Lambda that returns “Hello World” via API Gateway
+
+🔹 Day 10 – Messaging & Integration
+
+SQS (queue)
+
+SNS (notifications)
+
+EventBridge basics
+
+Hands-on: Trigger Lambda via SNS topic
+
+🔹 Day 11 – Infrastructure as Code
+
+CloudFormation basics
+
+Intro to Terraform (if time allows)
+
+Hands-on: Deploy an S3 bucket with CloudFormation
+
+🔹 Day 12 – Security Essentials
+
+Shared Responsibility Model
+
+KMS (Key Management Service)
+
+Secrets Manager
+
+Hands-on: Store DB credentials in Secrets Manager
+
+🔹 Day 13 – CI/CD in AWS
+
+CodeCommit, CodeBuild, CodeDeploy, CodePipeline basics
+
+Hands-on: Simple pipeline to deploy a static site to S3
