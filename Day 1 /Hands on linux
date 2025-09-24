@@ -1,0 +1,125 @@
+Navigation & File Operations
+ls, pwd, cd, cp, mv, rm, touch, mkdir, rmdir, tree
+
+File Viewing & Editing
+cat, less, more, head, tail -f (for logs), nano, vim
+
+Permissions & Ownership
+chmod, chown, umask
+
+Search & Filters
+grep, find, locate, which, whereis
+
+Compression/Archiving
+tar, gzip, bzip2, zip/unzip
+
+🔹 2. Process & Resource Management
+
+Critical for monitoring AI/DevOps workloads:
+
+Process control: ps, top, htop, kill, killall, jobs, fg, bg, nice, renice
+
+Resource usage: free -m, df -h, du -sh, uptime, iostat, vmstat
+
+Logs & Monitoring: journalctl, systemctl status, dmesg, tail -f /var/log/syslog
+
+🔹 3. Networking Essentials
+
+Needed for debugging APIs, containers, and AI services:
+
+ping, traceroute, curl, wget
+
+ifconfig / ip addr
+
+netstat, ss, lsof -i
+
+scp, rsync (moving models/data between servers)
+
+ssh with key-based auth (important for automation)
+
+🔹 4. User & Security Management
+
+User management: useradd, usermod, passwd, groups
+
+Sudo privileges: /etc/sudoers
+
+Firewalls & security: ufw, iptables basics
+
+SSH hardening: .ssh/authorized_keys
+
+🔹 5. Shell Scripting (Automation)
+
+This is where DevOps + AI meet (automating deployments, data prep, training pipelines):
+
+Variables & arguments ($1, $2, $@)
+
+Conditional statements (if, else, elif)
+
+Loops (for, while, until)
+
+Functions
+
+Exit codes & error handling ($?)
+
+Reading from files (while read line)
+
+Cron jobs for scheduling tasks
+
+🔸 Examples:
+
+Log monitoring script
+
+#!/bin/bash
+tail -f /var/log/syslog | grep "ERROR"
+
+
+Disk usage alert
+
+#!/bin/bash
+THRESHOLD=80
+USAGE=$(df / | grep / | awk '{print $5}' | sed 's/%//')
+if [ $USAGE -gt $THRESHOLD ]; then
+  echo "Disk usage above $THRESHOLD%" | mail -s "ALERT" admin@example.com
+fi
+
+🔹 6. DevOps-Specific Linux Skills
+
+Package management: apt, yum, dnf, brew
+
+Systemd services: systemctl start/stop/status
+
+Environment setup: .bashrc, .zshrc, .profile
+
+Containers: docker ps, docker exec, docker logs (most run on Linux)
+
+---------------------------------------------------------------------
+
+
+8. Hands-On Labs You Can Try
+
+System Monitoring Lab
+Write a script to log CPU, memory, and disk usage every minute.
+
+Deployment Lab
+Automate app startup: shell script + systemctl service file.
+
+Data Movement Lab
+Use scp or rsync to copy large datasets between servers.
+
+AI Job Lab
+Schedule a cron job that runs python train.py at midnight daily.
+
+Log Analysis Lab
+Use grep + awk + sort to find top error messages in logs.
+
+---------------------------------------------------
+
+Advanced
+
+Week 1: Advanced process, monitoring & systemd
+
+Week 2: Networking + storage (LVM, quotas, namespaces)
+
+Week 3: Security + shell scripting pipelines + JSON/YAML automation
+
+Week 4: Containers internals, DevOps CI/CD automation labs
