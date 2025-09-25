@@ -1,2 +1,4 @@
 TASK 1:Create a ec2 machine with ubuntu OS using user data (git, k8s)
 TASK 2:Create a local branch in add some files(Create a local branch in your git which was installed in ubuntu machine and add some files like py or sh and push this files from local branch to main branch in same repo)
+TASCK 3:Create 12 machines which the same connfg of jenkin server (not in manuval) through image creation
+TASK 4: Create a billing alert for AWS account
