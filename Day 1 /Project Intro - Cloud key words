@@ -8,6 +8,80 @@ Leads - Discuss only technical - brush up my skills
        docker images- 
 Scrum master - Project - Agile methodology - Sprint 1 - 2 weeks - User storeis / Task - Sprint planning 
 
+PMO - Keywords
+--------------------------------------------------------------------------------------------------------------
+PI- Planning - Project implementation planning--- ~ 3 months - every 3 months
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Sprint - -----------------------6 sprints------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Each sprint ----------------------2 weeks ------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Use stories ----------------------2 weeks------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+Tasks -------------------------Hours -------------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+10 days -----------------------------------------------------------------------
+
+8 days -------------------------------------------------------------------------
+1 task ---------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+
+
+Sprint Planning -    monday Sprint - Friday sprint planning - Deliverables -Sprint achievemnts
+app build 
+Infra
+devops
+db team ----------------------------------------------------------------------------------------
+monday - 2weeks - demo 
+friday -sprint plnnaing - Monday last srpint 
+
+-0------------------------------------------------------------------------------------------------------------------------
+retro --what weent 
+what we can do better 
+
+--------------------------------------------------------------------------------------------------------------------
+
+above applicable for agile /scrum / Safe agile 
+
+----------------------------------------------------------------------------------------------------------------------
+
+If you are in to support project 
+
+Ticketing tool - jira /azure devops boards 
+--------------------------------------------------------------------------------------
+AWS sevice supporting team - Terraform - his own vm not working 
+serivce desk - name id - issue reported - description 
+Access - check list - can you raise - Document - link access request - 
+SLA- Service level agreement 
+-------------------------------------------------------------------------------------------------------------------------
+
+Issues - severity - P1 
+              P2, p3, P4 
+p4 -issue -3-4 days - SLA - 
+p3 - 1-2 days 
+p2 hours - 12-16
+p1 - 15-20 mins 
+Documents- issue - fix -solution
+
+--------------------------------------------------------------------------------------------------------------
+Service request - if they want new service - until now you are not using that service
+printer access- 
+incident- printer - third - fix 
+problem- repeated same issue - proper - problem
+change  --- server config 
+CAB - chaange AB 
+------------------------------------------------------------------------------------------------------------------
+ETA- ETA-  Estimated time around - you accepted the request 
+TAT- Turn around time - issue resolving 
+Entity- storage - VPC-networking 
+cloud provider - aws , auzre , gcp
+uSers-----user application - 
+
+
+
+
 Srija - per day 8 hours - one task  1 point  1 day - 2
         PI - sprints -2 - one month- PI- 3 months - 6 sprints ---
    sprints 
@@ -70,5 +144,24 @@ access request-  name id - department - i am not able to access teams-
 ---------------------------------------------------------------------------------------------------------------------
 
 
+Project Abstract :  Overview - What is ? what ever delivering ?
+Onrole - TCS onrole -salary employee outlook/teams
+Client: ABB- BOFA- bank of america - BAT - 
+Outlook /teams 
+How many years: 5 yars 2020 
+Domain : Banking / Insurance 
+SKill stack : Azure - AWS / Devops / Cloud 
+Members: 13-15 --- Devops team mems
+Agile : Agile - sprints 
+Tools : Azure devops / Jenkins / Bitbucket / Git / Argocd /Docker 
+actions: Azure devops- Pipelines
+Aws - DB / ECR/ EKS
+scripts/programming : YAML / shell / Python
+Meetings: 10 AM BST - 15 -20 mins
+One to one - techlead --
+sprint planning
+retro
+pMO
+Archtiecute 
 
-client 
+
