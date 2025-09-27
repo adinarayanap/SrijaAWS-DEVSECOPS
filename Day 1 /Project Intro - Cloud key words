@@ -111,29 +111,92 @@ any help you needed ---
 
 -------------------------------------------------------------------------------------------------------------------
 
-Cloud Devops 
-
-
-Services - DB, K8s 
+Cloud Devops : azure / aws 
+Services - azure - Azure devops / Serivces- Vnet, blob,databricks 
+            aws :  VPC, Mongo Db, S3, AKS
 Build/Deployment- App - Development - push - devops - build / test / Deploy - URL - APp -
-CI/CD -- jenkins/ Argocd / Harnes /Azure devops
+End to End Deployment - Plan - 
+tools - flow
+CI/CD -- jenkins/ Argocd  /Azure devops
 Tools -- Sonarqube - Security scan- Dast , sast 
 Scripts ---Sh/ powershell/python
 Roles - Roles - DB /Devops /
 Access - Roles /Access
 PR- PUL request - Dev - Stage - QA- preprod - PROD
-Code base- SCM - code -
+Code base- SCM - code - git hub 
 commit - push 
 push - GIt 
-Environments -dev -stage - QA- 
-Production 
+Environments -dev -stage - QA 
+
+Production- effect 
+
 Hotfix- 
 branches-Branching - Dev - qa - stage main/master 
 Cloud provider- aws /azure / gcp 
 
 
+branching strategies - ? what you know about branching stratagies 
+Master  / Main 
+
+dev - master -wrong 
+
+Dev------- Dev env  - stage - qa - preprod -prod 
+
+
+task - feature/US-testtask -------------dev branch 
+pipeline - Dev deploy 
+
+PR - Dev branch - Stage branch - Pull request - reviewer -Stage /dev - same code -----
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+SD :  5 + YEARS OF EXP - devops
+I am good in CiCd tools like jenkins / 
+feature branch / 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+dev - PR - team lead 
+
+Dev - pipelin - Dev branch - Dev branch dev env 
+
+---------------------------------------------------Task : Raise a PR from Feature branch to Stage and deploy to QA ?
+                                                    PR- Fe- Dev - Dev deploy 
+Stage pr stage - PR stage -qa - qa deploy 
+                                                     Dev - stage-qa - preprod - prod 
+                                                     ---------------------------Prod ---user page login -  
+                                                     
+                                                          
+dev
+stage         
+stage
+qa
+preprod 
+main/master 
+|||||||
+
+Adi- feature/US347384789 PR - feature - Dev 
+srija  feature/US74897877
+abhishek featur/US948989849
+anil
+Dev branch - clone - local branch - branch - feature - dev PR -----
+Branch     : dev      
+             
+
+
+Environment : dev 
+
 supprot reqqeust - request - url -mail / teams 
 access request-  name id - department - i am not able to access teams- 
+
+HR - Intro 
+Company policies 
+WFo- Transport/ Idcard access 
+laptop- issue / SPOC - Project - POint of contact 
+HR - HR names - Salary rleated doc - HR 
+Project - Quick call
+Teams -gropus - ABB - Devops - adding - 
+
 
 
 
