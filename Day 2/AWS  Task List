@@ -5,4 +5,25 @@ TASCK 3:Create 12 machines which the same connfg of jenkin server (not in manuva
 
 independent - 
 TASK 4: Create a billing alert for AWS account
-TASK 5: 
+TASK 5: create a feature branch with name feature/Sep-2025- local branch 
+        ec2 - linux - git install - ec2- git hub - ssh keys enables
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Ec2 - git installation done - all the commands ----
+
+
+        repo - Devopsusecases
+        develop - branch 
+        directory - devopsusecase 
+        deploy.sh
+
+            git push to your repo under dev branch
+
+next step : create three branches -  stage , qa, preprod 
+
+
+develop copy stage
+develop copy qa
+develop copy preprod 
+
+branches push
