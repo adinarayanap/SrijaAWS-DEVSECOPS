@@ -1,1 +1,11 @@
+local laptop -   ipconfig ---we can get the ip address details
+                 we can find out the ip address 
+
+               ping  <ipadress> - response time 
+                         reply- ping 
+                        requested time out 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
