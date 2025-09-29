@@ -27,3 +27,8 @@ develop copy qa
 develop copy preprod 
 
 branches push
+----------------------------------------------------------------------
+29th sept
+create a security grp with name demo-test
+create 3 instances(linux or ubuntu) with the security grp as above
+create a shell script to stop the ABOVE 3 machines
