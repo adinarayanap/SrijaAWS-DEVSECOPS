@@ -2,16 +2,16 @@
 Terraform Project Structure (Best Practice)
 terraform-azure-infra/
 │
-├── main.tf              # Entry point - calls modules or directly defines resources
-├── providers.tf         # Cloud provider configuration (Azure)
-├── variables.tf         # All input variables (parameterized values)
-├── terraform.tfvars     # Actual values for variables (environment specific)
-├── outputs.tf           # Values to export after deployment
-├── backend.tf           # Remote backend (e.g., Azure Storage for state)
-├── versions.tf          # Required Terraform and provider versions
-├── vm.tf                # (Optional) VM-specific resources
-├── network.tf           # (Optional) VNet/Subnet resources
-└── azure-pipelines.yml  # Azure DevOps pipeline for Plan/Apply/Destroy
+├── main.tf               Entry point - calls modules or directly defines resources
+├── providers.tf          Cloud provider configuration (Azure)
+├── variables.tf          All input variables (parameterized values)
+├── terraform.tfvars      Actual values for variables (environment specific)
+├── outputs.tf            Values to export after deployment
+├── backend.tf            Remote backend (e.g., Azure Storage for state)
+├── versions.tf           Required Terraform and provider versions
+├── vm.tf                 (Optional) VM-specific resources
+├── network.tf            (Optional) VNet/Subnet resources
+└── azure-pipelines.yml   Azure DevOps pipeline for Plan/Apply/Destroy
 
  Detailed Explanation of Each File
 1. providers.tf – Provider & Authentication
