@@ -1,5 +1,5 @@
 
-Terraform Project Structure (Best Practice)
+Terraform Project Structure
 terraform-azure-infra/
 │
 ├── main.tf               Entry point - calls modules or directly defines resources
