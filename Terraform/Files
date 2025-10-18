@@ -1,1 +1,289 @@
 
+Terraform Project Structure (Best Practice)
+terraform-azure-infra/
+│
+├── main.tf              # Entry point - calls modules or directly defines resources
+├── providers.tf         # Cloud provider configuration (Azure)
+├── variables.tf         # All input variables (parameterized values)
+├── terraform.tfvars     # Actual values for variables (environment specific)
+├── outputs.tf           # Values to export after deployment
+├── backend.tf           # Remote backend (e.g., Azure Storage for state)
+├── versions.tf          # Required Terraform and provider versions
+├── vm.tf                # (Optional) VM-specific resources
+├── network.tf           # (Optional) VNet/Subnet resources
+└── azure-pipelines.yml  # Azure DevOps pipeline for Plan/Apply/Destroy
+
+ Detailed Explanation of Each File
+1. providers.tf – Provider & Authentication
+
+This file tells Terraform which cloud provider to use and how to authenticate.
+
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.0"
+    }
+  }
+}
+
+provider "azurerm" {
+  features {}
+  subscription_id = var.subscription_id
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  tenant_id       = var.tenant_id
+}
+
+
+ Purpose:
+
+Connects Terraform to Azure.
+
+Uses Service Principal credentials (safe for CI/CD).
+
+Version lock ensures predictable builds.
+
+2. backend.tf – Remote State Storage
+
+Stores Terraform state in Azure Storage Account (best practice for teams).
+
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "tfstate-rg"
+    storage_account_name = "tfstateaccount123"
+    container_name       = "tfstate"
+    key                  = "prod.terraform.tfstate"
+  }
+}
+
+
+ Purpose:
+
+Stores .tfstate remotely so multiple people/pipelines can work safely.
+
+Avoids accidental overwrites.
+
+3. variables.tf – Input Variables
+
+Defines all configurable inputs.
+
+variable "subscription_id" {
+  description = "Azure Subscription ID"
+  type        = string
+}
+
+variable "location" {
+  description = "Azure region"
+  type        = string
+  default     = "East US"
+}
+
+variable "vm_size" {
+  description = "Size of the Virtual Machine"
+  type        = string
+  default     = "Standard_B1s"
+}
+
+
+ Purpose:
+
+Makes your code reusable for multiple environments.
+
+Allows pipelines to inject values dynamically.
+
+4. terraform.tfvars – Actual Values for Variables
+
+Environment-specific values go here.
+
+subscription_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+client_id       = "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+client_secret   = "your-secret"
+tenant_id       = "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+location        = "East US"
+vm_size         = "Standard_B2s"
+
+
+ Purpose:
+
+Keeps secrets/configs separate from code.
+
+Easier to maintain multiple environments (dev, stage, prod).
+
+5. network.tf – Networking Resources (VNet, Subnet)
+
+Defines the virtual network and subnet.
+
+resource "azurerm_virtual_network" "main" {
+  name                = "vnet-main"
+  address_space       = ["10.0.0.0/16"]
+  location            = var.location
+  resource_group_name = azurerm_resource_group.main.name
+}
+
+resource "azurerm_subnet" "subnet1" {
+  name                 = "subnet-main"
+  resource_group_name  = azurerm_resource_group.main.name
+  virtual_network_name = azurerm_virtual_network.main.name
+  address_prefixes     = ["10.0.1.0/24"]
+}
+
+
+ Purpose:
+
+Creates foundational network layer.
+
+Used by VMs and other services.
+
+6. vm.tf – Virtual Machine Resources
+
+Defines a Linux or Windows VM.
+
+resource "azurerm_network_interface" "vm_nic" {
+  name                = "vm-nic"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.main.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.subnet1.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
+resource "azurerm_linux_virtual_machine" "vm" {
+  name                  = "demo-vm"
+  resource_group_name   = azurerm_resource_group.main.name
+  location              = var.location
+  size                  = var.vm_size
+  admin_username        = "azureuser"
+  network_interface_ids = [azurerm_network_interface.vm_nic.id]
+
+  admin_ssh_key {
+    username   = "azureuser"
+    public_key = file("~/.ssh/id_rsa.pub")
+  }
+}
+
+
+ Purpose:
+
+Deploys compute resources.
+
+Can be extended to multiple VMs or VM Scale Sets.
+
+7. main.tf – Resource Group & Resource Linking
+
+Entry point – ties everything together.
+
+resource "azurerm_resource_group" "main" {
+  name     = "rg-demo-infra"
+  location = var.location
+}
+
+module "network" {
+  source = "./network.tf"
+}
+
+module "vm" {
+  source = "./vm.tf"
+}
+
+
+ Purpose:
+
+Central orchestrator of your infrastructure.
+
+Can directly declare resources or call modules.
+
+8. outputs.tf – Useful Outputs After Deployment
+output "vm_public_ip" {
+  description = "Public IP of the VM"
+  value       = azurerm_public_ip.vm_public_ip.ip_address
+}
+
+output "resource_group" {
+  value = azurerm_resource_group.main.name
+}
+
+
+ Purpose:
+
+Makes key information available to users or pipelines.
+
+Used in automation (e.g., passing IP to Ansible, scripts, etc.).
+
+9. azure-pipelines.yml – CI/CD Pipeline for Terraform
+
+Here’s a sample 3-stage Azure DevOps pipeline:
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  ARM_CLIENT_ID: $(servicePrincipalId)
+  ARM_CLIENT_SECRET: $(servicePrincipalKey)
+  ARM_SUBSCRIPTION_ID: $(subscriptionId)
+  ARM_TENANT_ID: $(tenantId)
+
+stages:
+- stage: Plan
+  jobs:
+  - job: TerraformPlan
+    steps:
+    - task: TerraformInstaller@1
+      inputs:
+        terraformVersion: '1.5.0'
+    - script: terraform init
+    - script: terraform plan -out=tfplan
+
+- stage: Apply
+  dependsOn: Plan
+  condition: succeeded()
+  jobs:
+  - job: TerraformApply
+    steps:
+    - script: terraform apply -auto-approve tfplan
+
+- stage: Destroy
+  condition: manual
+  jobs:
+  - job: TerraformDestroy
+    steps:
+    - script: terraform destroy -auto-approve
+
+
+ Purpose:
+
+Automates Plan → Apply → Destroy lifecycle.
+
+Uses Azure DevOps variables for secrets.
+
+Manual approval for destructive actions (best practice).
+
+ Recommended Workflow
+
+Write Terraform code → commit to GitHub/Azure Repos.
+
+Set up Azure DevOps Service Connection → uses SPN for auth.
+
+Run pipeline → triggers on code push or manual run.
+
+Terraform Plan → shows changes.
+
+Terraform Apply → deploys infrastructure.
+
+Terraform Destroy → cleans up (manual gate).
+
+ Best Practices
+
+Always use remote state backend (backend.tf) for team collaboration.
+
+Parameterize all values in variables.tf + terraform.tfvars.
+
+Lock provider versions in providers.tf & versions.tf.
+
+Enable pipeline approvals for destroy operations.
