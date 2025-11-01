@@ -7,4 +7,141 @@ MG
 RG
 DB
  create - us-east-1
+
+# Main.tf
+terraform {
+  required_providers {
+    aazurerm = {
+      source  = "hashicorp/azurerm"
+      #version = "~>3.0"
+    }
+  }
+}
+provider "azurerm" {
+  feature {}
+}
+
+# Management Group
+resource "azurerm_management_group" "mg"{
+  display_name = "mg-eastus-demo"
+  name = "mg-eastus-demo"
+}
+
+# Resource Group 
+resource "azurerm_resource_Group" "rg" {
+  name = "rg-easteus-demo"
+  location = "East US"
+}
+
+# VNET and Subnet
+resource "azurerm_virtual_network" "vnet" {
+  name = "vnet-eastus-demo"
+  address_space = ["10.0.0.0/16]
+  address_space = azurerm_resource_group.rg.location
+  resource-group_name = azurerm_resource_group.rg.name
+}
+
+resource "azurerm_subnet" "subney" {
+  name = "subnet-easteus-demo"
+  resource_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes = ["10.0.1.0/24]
+}
+  
+# Network Security Group
+resource "azurerm_nerwork_security_group" "nsg" {
+  name = "nsg-eastus-demo"
+  location = azurerm_resource_group.rg.name
+}
+
+resource "azurerm_network_security-rule" "ssh_rule" {
+  name = "Allow-SSH"
+  priority = 100
+  direction = "Inbound"
+  access "Allow"
+  protocol = "Tcp"
+  source_port_range = "*"
+  destination_port_range = "22"
+  source_address_prefix = "*"
+  destination_address_perfix = "*"
+  resource_group_name = azurerm_resource_group.nsg.name
+  network_security_group_name = azurerm-security_group.nsg.name
+}
+
+# Public IP + Network Interface
+recource "azurerm-public_ip" "pip" {
+  name = "pip-eastus-demo"
+  location = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  allocation_method = "Dynamic"
+}
+
+resource "azurerm_nerwork_interface" "nic"{
+  name = "nic-eastus-demo"
+  location = azurem_resource_group_name.rg.location
+  resource_group_name = azurerm_resource_group_name.rg.name
+ip_configuration {
+  name = "ipconfig"
+  subnet_id = azurerm_subnet.subnet.id
+  private_ip_address_allocation = "Dynamic"
+  public_ip_address_id = azure_public_ip.pip.id
+  }
+}
+
+# VM
+resource "azurerm_linux_virtual_machine" "vm" {
+  name = "vm-eastus-demo"
+  resource_group_name = azurerm_resource_group.rg.name
+  location = azurerm_resource_group.rg.location
+  size = "Standard_B1s"
+  admin_username = "azureuser"
+  admin_password = "password1234!"
+  disable_password_authentication = false
+
+network_interface_ids = [
+  azurerm_network_interface.nic.id
+]
+
+os_disk {
+ caching = "ReadWrite"
+ stroage_account_type = "standard_LRS"
+}
+
+source_image_reference {
+  publisher = "Canonical"
+  offer = "0001-com-ubuntu-server-focal"
+  sku = "20_04-1ts"
+  version = "latest"
+  }
+}
+
+# SQL Server & Database
+resource = "azurerm_sql_server" "sqlserver" {
+  resource_group_name = azurem_resource_group.rg.name
+  location = azurerm_resource_group.rg.location
+  version = "12.0"
+  administrator_login = "sqladminuser"
+  administrator_login_password = "password1234!"
+}
+
+resource "azurem_sql_database" "sqldb" {
+  name "sqldb-eastus-demo"
+  resource_group_name = azurerm_resource_group.rg.name
+  location = azurem_resource_group.rg.location
+  server_name = azurerm_sql_server.sqlserver.name
+  sku_name "Basic"
+} 
+
+# Ouput.tf
+output "vm_public_ip {
+  value = azurem_public_ip.pip.ip_address
+}
+output "sql_server_name" {
+  value = azurerm_sql_server.sqlserver.name
+}
+
+
+
  
+
+
+
